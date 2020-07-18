@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "goorganic-ui"
+    }
+  },
+  "defaultProject": "goorganic-ui",
+  "cli": {
+    "analytics": "08ddc36a-c7c1-498a-974c-a1c6a725c8fe"
+  }
 }
