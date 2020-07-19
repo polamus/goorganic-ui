@@ -5,12 +5,12 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from "rxjs";
 
 interface HttpOptions {
-	[key: string]; any
+	[key: string]: any
 }
 
 @Injectable()
 export class MainFactory {
-	serverURL: string = '/api';
+	serverURL: string = '/';
 	httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' })
 	      .append('Accept', 'application/json');
 
@@ -37,21 +37,7 @@ export class MainFactory {
 	};
 
 
-	public getGeneralRequest(url: string, params?: HttpParams, headers?:{[name:string]:string}, responseType?): Observable<any> {
-	  const options:HttpOptions = {
-	    withCredentials: true,
-	    headers: headers || this.httpHeaders
-	  };
-
-	  if(responseType) {
-	    options.responseType = responseType;
-	  }
-
-	  if (params) {
-	    options.params = params;
-	  }
-
-	  return this.httpClient.get(url, options);
-
+	public getRequest(url: string, params?: HttpParams, headers?:HttpHeaders): Observable<any> {
+	  return this.httpClient.get(this.serverURL + url, { withCredentials: false, headers: headers || this.httpHeaders, params: params});
 	};
 }

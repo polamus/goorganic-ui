@@ -1,4 +1,4 @@
-expot class Action{
+export class Action{
 	actionType: string;
 	payload: any;
 

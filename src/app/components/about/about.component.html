@@ -1,0 +1,12 @@
+<div class= "about">
+	<div class="col-md-4">
+		<button id="about-id"
+		       (click)="clickAbout()"> <span> About </span>
+		</button>
+					<h1>{{ title }}</h1>
+
+		<span *ngIf="isAboutClicked === true">
+			<h1>{{ aboutStore.title }}</h1>
+		</span>
+	</div>
+</div>
