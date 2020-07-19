@@ -11,6 +11,7 @@ import { AboutComponent } from './components/about/about.component';
 import { Dispatcher } from './dispatcher/Dispatcher';
 import { MainFactory } from './factories/Main.factory';
 import { AboutStore } from './components/about/About.store';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
@@ -31,6 +32,7 @@ const routes: Routes = [
     GoOrganicRoutingModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
+    MDBBootstrapModule.forRoot()
   ],
   providers: [
               {provide: LocationStrategy, useClass: HashLocationStrategy},
