@@ -5,10 +5,12 @@ import {MainFactory} from '../../factories/Main.factory';
 
 
 @Injectable()
-export class AboutStore {
-
-  
-
+export class HomeStore {
+	
+	title:string = "null";
+	isclickAboutClicked:boolean = false;
+	clsArrOkBtn:boolean = true;
+	
 	constructor(private dispatcher: Dispatcher, private mainFactory: MainFactory) {
 
 	};
@@ -17,6 +19,10 @@ export class AboutStore {
 	  const payload = action.payload;
       
       switch(action.actionType){
+        case 'clickAbout':
+          this.isclickAboutClicked = true;
+          this.loadAboutData();
+          break;
         default:
       }
 
@@ -25,4 +31,14 @@ export class AboutStore {
 	initialize() {
 	  this.dispatcher.registerListener(this.receiveDispatch.bind(this));
 	};
+
+    // This has to change to fetch all categories data
+
+	loadAboutData(){
+	  this.mainFactory.getRequest('api/status').subscribe(
+	    response => {
+	      this.title = response.data;
+	    }
+	  )
+	}
 }

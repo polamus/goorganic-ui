@@ -6,8 +6,10 @@ import {Router, ActivatedRoute } from "@angular/router";
 import {Dispatcher} from './dispatcher/Dispatcher';
 import {Action} from './dispatcher/Action';
 import {MainFactory} from './factories/Main.factory';
-import {AboutStore} from './components/about/About.store'; 
+import {HomeStore} from './components/home/Home.store'; 
+import {HeaderStore} from './components/header/Header.store'; 
 
+import {AboutStore} from './components/about/About.store'; 
 
 
 @Component({
@@ -25,6 +27,8 @@ export class OrganicComponent implements OnInit {
               private router:Router,
               private mainFactory:MainFactory,
               private dispatcher:Dispatcher,
+              private homeStore:HomeStore,
+              private headerStore:HeaderStore,
               private aboutStore:AboutStore) {
 
             this._activatedRoute.queryParams.subscribe(url => {
@@ -43,7 +47,9 @@ export class OrganicComponent implements OnInit {
     this.dispatcher.registerListener(this.dispatchHandler);
 
     this.mainFactory.initialize();
+    this.homeStore.initialize();
     this.aboutStore.initialize();
+    this.headerStore.initialize();
   }
 
 }
