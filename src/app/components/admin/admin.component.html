@@ -1,0 +1,13 @@
+<toolbar></toolbar>
+    
+    <div class="loginform" *ngIf="!tokenAuthService.userSignedIn()" >
+      
+        <app-login-form *ngIf="isLoginMode()">
+        </app-login-form>
+        <app-register-form *ngIf="isRegisterMode()">
+        </app-register-form>
+  </div>
+
+   <div  *ngIf="tokenAuthService.userSignedIn()" >
+   	<h1> You are logged in </h1>
+   </div>

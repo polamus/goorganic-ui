@@ -1,15 +1,16 @@
-
-
 import { Component, OnInit, OnDestroy, ViewContainerRef, ViewEncapsulation, HostListener } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Router, ActivatedRoute } from "@angular/router";
+import {Angular2TokenService} from "angular2-token";
+
 import {Dispatcher} from './dispatcher/Dispatcher';
 import {Action} from './dispatcher/Action';
 import {MainFactory} from './factories/Main.factory';
 import {HomeStore} from './components/home/Home.store'; 
 import {HeaderStore} from './components/header/Header.store'; 
-
 import {AboutStore} from './components/about/About.store'; 
+import {environment} from "../environments/environment";
+import {LoginStore} from './components/login-form/Login.store'; 
 
 
 @Component({
@@ -29,12 +30,11 @@ export class OrganicComponent implements OnInit {
               private dispatcher:Dispatcher,
               private homeStore:HomeStore,
               private headerStore:HeaderStore,
-              private aboutStore:AboutStore) {
+              private aboutStore:AboutStore,
+              private loginStore:LoginStore,
+              private authToken: Angular2TokenService) {
 
-            this._activatedRoute.queryParams.subscribe(url => {
-
-            // this.globalStore.receiveUserParams(url);
-            });
+        this.authToken.init(environment.token_auth_config);
     }
 
 
@@ -50,6 +50,7 @@ export class OrganicComponent implements OnInit {
     this.homeStore.initialize();
     this.aboutStore.initialize();
     this.headerStore.initialize();
+    this.loginStore.initialize();
   }
 
 }
