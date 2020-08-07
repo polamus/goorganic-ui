@@ -6,7 +6,7 @@ import {Router} from '@angular/router';
 
 
 @Injectable()
-export class HeaderStore {
+export class ToolbarStore {
 	
 	constructor(private dispatcher: Dispatcher, private mainFactory: MainFactory, private router:Router) {
 
@@ -16,11 +16,11 @@ export class HeaderStore {
 	  const payload = action.payload;
       
       switch(action.actionType){
-        case 'clickAbout':
-          this.router.navigate(['about', '']);
+        case 'clickLogin':
+          this.router.navigate(['sign-in', '']);
           break;
         case 'clickHome':
-          this.router.navigate(['home', '']);
+          this.router.navigate(['#/', '']);
           break;
         default:
       }

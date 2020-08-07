@@ -1,0 +1,13 @@
+<form class = "loginform" (ngSubmit)="onSignInSubmit()" #f="ngForm" >
+
+
+  <div class="container ">
+    <label for="email"><b>Email</b></label>
+    <input [(ngModel)]="signInUser.email"  type="email" placeholder="Enter Email" name="email" required>
+
+    <label for="password"><b>Password</b></label>
+    <input [(ngModel)]="signInUser.password"  type="password" placeholder="Enter Password" name="password" required>
+
+    <button type="submit">Login</button>
+  </div>
+</form>

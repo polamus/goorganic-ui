@@ -1,0 +1,8 @@
+
+<div class="topnav">
+  <a >Go Organic</a>
+
+  <a *ngIf="!tokenAuthService.userSignedIn()" (click)="presentAuthDialog('login')"  style="float:right">Login</a>
+  <a *ngIf="!tokenAuthService.userSignedIn()" (click)="presentAuthDialog('register')" style="float:right">Register</a>
+  <a *ngIf="tokenAuthService.userSignedIn()" (click)="tokenAuthService.signOut()" style="float:right">Logout</a>
+</div> 
